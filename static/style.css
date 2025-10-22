@@ -1,3 +1,23 @@
 #clickMe {
     color : red;
 }
+.example {
+    color : green;
+} 
+a{
+    color :burlywood; 
+}
+h1{
+    color : purple;
+}
+img{
+  border: 27px solid rgb(255, 236, 127);
+  border-radius: 250px;
+}
+.highlight{
+    background-color: aquamarine;
+}
+.blabla{
+    background-color: magenta; color: lime; font-weight: 7000;
+}
+
