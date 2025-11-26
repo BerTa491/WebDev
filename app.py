@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template 
+from flask import Flask, request, render_template, redirect 
 
 app = Flask(__name__)
 
@@ -11,6 +11,11 @@ def submit():
     message = request.form['message'] 
     return f"Thanks {username}, your message was: {message}" 
 
+@app.route('/favicon.ico') 
+
+def favicon(): 
+
+    return redirect("/static/favicon.ico") 
  
 @app.route("/")
 def home():

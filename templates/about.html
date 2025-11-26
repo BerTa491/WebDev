@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <div class="container my-4"> 
+
+  <h2>My Card Collection</h2> 
+
+  <input type="text" class="my-3" id="textInput" placeholder="Please enter text...">
+
+  <button id="addCard" class="btn btn-success mb-3">Add Card</button> 
+
+  <div id="cardContainer" class="row g-3"></div> 
+
+</div> 
      <nav class="navbar navbar-expand bg-light"> 
 
         <div class="container-fluid"> 
@@ -41,3 +52,4 @@
     <br><a href="index.html">Go back here or he will touch you</a>
 </body>
 </html>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
