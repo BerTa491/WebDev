@@ -110,11 +110,21 @@ let intervalID = -1;
 
 let timerToBeIncremented = 0; 
 
+let timerIsRunning = false
  
 
 document.getElementById("timerStart").addEventListener("click", () => { 
 
+    
+    if (timerIsRunning == false){
+
+    timerToBeIncremented = parseInt(document.getElementById("Textfield").value)
+
     intervalID = setInterval(logTimer, timeout=1000); 
+
+    timerIsRunning = true
+
+    }
 
 }) 
 
@@ -122,12 +132,23 @@ function logTimer() {
 
     console.log("Time: " + timerToBeIncremented); 
 
-    timerToBeIncremented += 1; 
+    document.getElementById("timerdisplay").innerHTML=timerToBeIncremented
+    timerToBeIncremented += -1; 
 
-    if (timerToBeIncremented > 10) { 
+    if (timerToBeIncremented <= 0) { 
 
         clearInterval(intervalID); 
 
     } 
 
 } 
+function timerRotate() {
+
+document.getElementById("timerStart").style.rotate = document.getElementById("timerStart").dataset.rotating+"deg"; 
+
+document.getElementById("timerStart").dataset.rotating = parseInt(document.getElementById("timerStart").dataset.rotating) + 5 
+
+}
+
+ intervalID = setInterval(timerRotate, timeout=16);
+
