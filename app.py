@@ -103,6 +103,26 @@ def about():
 
      return render_template("about.html") 
 
+
+@app.route("/api/get_comments", methods=['GET'])
+def getTODO():
+    data = request.args
+    arg1 = data.get('page') # this is the name used in the URL to send stuff here
+    
+    instance = conn.cursor()
+    instance.execute(
+        'SELECT author_name, message FROM comments WHERE page_name = %s',
+        (arg1,)
+    )
+    results = instance.fetchall()
+    
+    return jsonify({
+        'status': 'success',
+        'TODO': results  # this TODO name is later used in javascript
+    })
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
