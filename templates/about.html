@@ -6,7 +6,7 @@
     <title>My Flask Site</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body data-page-name="CreativeName">
   <div class="container my-4"> 
 
   <h2>My Card Collection</h2> 
@@ -57,6 +57,24 @@
         <button class="btn btn-warning" id="timerStart"data-rotating = 0>Timer Start</button> <p id="timerdisplay"></p><input type = "text" id = "Textfield">
 
     </div> 
+
+ <div class="comment-block"> 
+
+        <h3> 
+
+            Comments 
+
+        </h3> 
+
+        <ul id="comment-container"> 
+
+            Nothing here yet. 
+
+        </ul> 
+
+    </div> 
+
+    <script src="{{ url_for('static', filename='comments.js') }}"></script> 
 
  
 </body>

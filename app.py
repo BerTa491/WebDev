@@ -118,10 +118,9 @@ def getTODO():
     
     return jsonify({
         'status': 'success',
-        'TODO': results  # this TODO name is later used in javascript
+        'comments': results  # this TODO name is later used in javascript
     })
-
-
+ 
 
 if __name__ == "__main__":
     app.run(debug=True)
