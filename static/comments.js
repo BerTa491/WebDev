@@ -53,3 +53,33 @@ document.addEventListener('DOMContentLoaded', () => {
     } 
 
 }); 
+    document.getElementById('milk')?.addEventListener('submit', (event) => {
+        event.preventDefault(); // this prevents the standard action that is taken when certain things happen. 
+                                // Forms automatically send stuff to the server when submitted, and redirect to a new page.
+                                // We don't want that.
+const pageName = document.body.dataset.pageName; 
+        let form = document.getElementById('milk');
+        let formData = new FormData(form);                   // find the form, and transform the data inside of it.
+
+        formData.append('page_name', pageName)
+        formData.append('author_name', document.getElementById('author_name').value)
+        formData.append('message', document.getElementById('message').value)
+
+        fetch('/api/insert_comments', {
+            method: 'POST',
+            body: formData,
+        }) 
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == 'success') {
+            
+              console.log(data.message);
+            }
+            else {
+              console.error(data.message);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        })
+    });

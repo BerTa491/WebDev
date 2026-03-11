@@ -121,6 +121,24 @@ def getTODO():
         'comments': results  # this TODO name is later used in javascript
     })
  
+@app.route("/api/insert_comments", methods=['POST'])
+def insert_comments():
+    data = request.form
+    if not data:
+        return jsonify({"status" : "error", "message": "invalid payload"})
+    
+    arg1 = data.get('page_name')
+    arg2 = data.get('author_name')     # change and add more as needed. 
+    arg3 = data.get('message')
+    
+    try:
+        instance = conn.cursor()
+        instance.execute('INSERT INTO comments (page_name, author_name, message) VALUES (%s, %s, %s)', 
+                        (arg1, arg2, arg3))
+        conn.commit()
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+    return jsonify({"status": "success", "message": "Insert successful!"})
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -74,6 +74,22 @@
 
     </div> 
 
+<form id="milk">
+  <div class="form-group">
+    <label for="author_name" class="form-label">Name</label>
+    <textarea type="name" class="form-control" id="author_name" aria-describedby="your_name"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea type="comment" class="form-control" id="message"></textarea>
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
     <script src="{{ url_for('static', filename='comments.js') }}"></script> 
 
  
