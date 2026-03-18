@@ -73,7 +73,10 @@ const pageName = document.body.dataset.pageName;
         .then(data => {
             if (data.status == 'success') {
             
+                loadStuff(pageName); 
+
               console.log(data.message);
+              document.getElementById('milk').reset();
             }
             else {
               console.error(data.message);
