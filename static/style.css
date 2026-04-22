@@ -20,4 +20,6 @@ img{
 .blabla{
     background-color: magenta; color: lime; font-weight: 7000;
 }
-
+.chatMessage{
+background-color: seagreen; color: aquamarine; margin: 7; border: 32px solid rgb(192, 168, 29); border-radius: 2500px;
+}

@@ -1,8 +1,13 @@
 from flask import Flask, render_template, redirect, jsonify, request
 import pymysql
 
+from flask_socketio import SocketIO, emit 
+
 app = Flask(__name__)
 
+socketio = SocketIO() 
+
+socketio.init_app(app) 
 
 # creates the connection to the DB. If the DB is not running, this will crash your server! (add a # to commment it out in that case)
 conn = pymysql.connect(
@@ -103,6 +108,11 @@ def about():
 
      return render_template("about.html") 
 
+@app.route("/livechat") 
+
+def livechat(): 
+
+     return render_template("livechat.html") 
 
 @app.route("/api/get_comments", methods=['GET'])
 def getTODO():
@@ -140,6 +150,18 @@ def insert_comments():
         return jsonify({"status": "error", "message": str(e)})
     return jsonify({"status": "success", "message": "Insert successful!"})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@socketio.on('message') 
 
+def send_message(data): 
+
+    emit('receive message', data, broadcast=True)
+
+if __name__ == "__main__": 
+
+    #app.run(debug=True) 
+
+    # USE socketio.run instead of app.run 
+
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True) 
+
+ 
