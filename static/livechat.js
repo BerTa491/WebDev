@@ -9,7 +9,7 @@ var username = prompt('Please enter a username');
 
 { 
 
-message : document.getElementById("message").value, 
+message : document.getElementById("message").value, name : username,
 
 
 time: Date.now(), 
@@ -26,7 +26,40 @@ socket.on("receive message",  (data) => {
 
 const message = document.createElement('div');  
 
-message.innerHTML = data.message
+ 
+
+date = new Date(data.time); 
+
+          options = { 
+
+            day:'numeric', 
+
+            month:'numeric', 
+
+            year:'numeric', 
+
+            hour:'2-digit', 
+
+            minute: 'numeric', 
+
+            second:'numeric', 
+
+          } 
+
+date.toLocaleString("de-DE", options) 
+ 
+
+message.innerHTML = ` 
+
+       <p> ${data.name} </p>
+
+        <p> ${date}</p> 
+
+        <p>${data.message}</p> 
+
+    `; 
+
+ 
 
 data.time
 
@@ -35,4 +68,5 @@ message.classList.add('chatMessage');
 id = document.getElementById("chatBox").appendChild(message)
 
 })
+
 
