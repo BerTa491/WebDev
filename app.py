@@ -156,6 +156,26 @@ def send_message(data):
 
     emit('receive message', data, broadcast=True)
 
+users = {}
+
+@socketio.on('join') 
+
+def join_message(data): 
+
+    global users 
+
+    users[request.sid] = data
+ 
+    emit('join message', data, broadcast=True)
+
+@socketio.on('disconnect') 
+
+def leave_message():
+    
+    emit('join message', users[request.sid], broadcast=True) 
+     
+    users.pop(request.sid) 
+
 if __name__ == "__main__": 
 
     #app.run(debug=True) 
