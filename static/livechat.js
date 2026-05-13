@@ -65,6 +65,7 @@ data.time
 message.classList.add('chatMessage'); 
 
 id = document.getElementById("chatBox").appendChild(message)
+message.scrollIntoView();
 
 })
 
@@ -86,6 +87,7 @@ data.time
 message.classList.add('chatMessage'); 
 
 id = document.getElementById("chatBox").appendChild(message)
+message.scrollIntoView();
 
 })
  
@@ -95,7 +97,7 @@ const message = document.createElement('div');
 
 message.innerHTML = ` 
 
-        <span>${data} left! </span>
+        <span class = "U">${data}</span> <span class = "userLeft">left! </span>
 
         
     `; 
@@ -107,6 +109,11 @@ data.time
 message.classList.add('chatMessage'); 
 
 id = document.getElementById("chatBox").appendChild(message)
+message.scrollIntoView();
 
 })
  
+
+socket.on("UserNumber",  (data) => {
+document.getElementById("UN").innerHTML = data
+})

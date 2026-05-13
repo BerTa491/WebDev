@@ -168,13 +168,17 @@ def join_message(data):
  
     emit('join message', data, broadcast=True)
 
+    emit("UserNumber",len(users), broadcast=True)
+
 @socketio.on('disconnect') 
 
 def leave_message():
     
-    emit('join message', users[request.sid], broadcast=True) 
-     
+    emit('leave message', users[request.sid], broadcast=True) 
+
     users.pop(request.sid) 
+
+    emit("UserNumber",len(users), broadcast=True)
 
 if __name__ == "__main__": 
 
